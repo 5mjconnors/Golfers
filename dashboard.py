@@ -26,7 +26,6 @@ def generate_table(dataframe, max_rows=80):
     ])
 
 app = dash.Dash(__name__, external_stylesheets=stylesheet)
-server = app.server
 
 fig = px.scatter(PGA, x = 'Avg_Drive_Dis', y = 'Points', opacity = 0.65, trendline = 'ols', trendline_color_override = 'darkblue')
 
@@ -257,6 +256,8 @@ def var_plot(variable, countries, minage, maxage):
     fig = px.scatter(PGA2, x = variable, y = 'Points', opacity = 0.65, trendline = 'ols', trendline_color_override = 'red', title = str(len(PGA2)) + ' Players in Selected Criteria')
     fig.update_layout(title_x = 0.5)  
     return fig
+
+server = app.server
 
 if __name__ == '__main__':
     app.run_server(debug=False)
